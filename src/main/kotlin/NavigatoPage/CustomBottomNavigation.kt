@@ -18,10 +18,12 @@ import androidx.compose.ui.unit.dp
 fun CustomBottomNavigation(
     items: List<String>,
     selectedTabIndex: Int,
-    onTabSelected: (Int) -> Unit, ) {
+    onTabSelected: (Int) -> Unit,
+) {
 
-    Column (
-        modifier = Modifier.fillMaxWidth().padding(8.dp),) {
+    Column(
+        modifier = Modifier.fillMaxWidth().padding(8.dp),
+    ) {
 
         items.forEachIndexed { index, item ->
             val isSelected = selectedTabIndex == index
@@ -30,14 +32,15 @@ fun CustomBottomNavigation(
 
             Box(
                 modifier = Modifier
-                    .padding(start = 8.dp,end=8.dp, bottom = 5.dp, top = 5.dp)
+                    .padding(start = 8.dp, end = 8.dp, bottom = 5.dp, top = 5.dp)
                     .fillMaxWidth()
                     .clip(RoundedCornerShape(5.dp))
                     .background(backgroundColor)
                     .clickable {
                         if (!isSelected) {
                             onTabSelected(index)
-                        }}) {
+                        }
+                    }) {
 
                 Text(
                     text = item,

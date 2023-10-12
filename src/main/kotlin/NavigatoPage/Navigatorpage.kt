@@ -15,26 +15,27 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import page
+import recommend_page.RecommendPage
 
 @Composable
-fun NavigatoPage(){
+fun NavigatoPage() {
     val scrollState = rememberScrollState()
 
     Row {
         Column(
             modifier = Modifier.background(Color(0xfff0f3f6))
-                .width(250.dp).fillMaxHeight().verticalScroll(scrollState)) {
+                .width(225.dp).fillMaxHeight().verticalScroll(scrollState)
+        ) {
             WYY()
             NavigatorItem()
         }
 
-        page()
+        RecommendPage()
     }
 }
 
 @Composable
-fun WYY(){
+fun WYY() {
     Row(
         horizontalArrangement = Arrangement.Center,
         verticalAlignment = Alignment.CenterVertically,
@@ -45,10 +46,12 @@ fun WYY(){
         Text("网易云音乐", fontSize = 20.sp, fontWeight = FontWeight.Black, modifier = Modifier.padding(3.dp))
 
         Card(
-            modifier = Modifier.clip(CircleShape).border(1.dp, Color(0xffaeb3bc), CircleShape).width(25.dp)) {
+            modifier = Modifier.clip(CircleShape).border(1.dp, Color(0xffaeb3bc), CircleShape).width(25.dp)
+        ) {
             Box(
                 contentAlignment = Alignment.Center,
-                modifier = Modifier.padding(1.dp)) {
+                modifier = Modifier.padding(1.dp)
+            ) {
                 Text("Beta", fontSize = 9.sp, color = Color(0xffaeb3bc))
             }
         }
@@ -60,12 +63,26 @@ fun NavigatorItem() {
     var selectedTabIndex1 by remember { mutableStateOf(0) }
     var selectedTabIndex2 by remember { mutableStateOf(-1) }
 
-    val items = listOf("为我推荐", "云音乐精选", "博客", "私人漫游", "社区","我喜欢的音乐","最近播放","我的播客","我的收藏","下载管理","本地音乐","我的音乐盘")
+    val items = listOf(
+        "为我推荐",
+        "云音乐精选",
+        "博客",
+        "私人漫游",
+        "社区",
+        "我喜欢的音乐",
+        "最近播放",
+        "我的播客",
+        "我的收藏",
+        "下载管理",
+        "本地音乐",
+        "我的音乐盘"
+    )
 
     Column {
         CustomBottomNavigation(
             items = items.take(5),
-            selectedTabIndex = selectedTabIndex1) {
+            selectedTabIndex = selectedTabIndex1
+        ) {
 
             selectedTabIndex1 = if (selectedTabIndex1 == it) -1 else it
             selectedTabIndex2 = -1
@@ -74,12 +91,14 @@ fun NavigatorItem() {
         Divider(
             color = Color(0xffebeff2),
             thickness = 1.dp,
-            modifier = Modifier.fillMaxWidth().padding(10.dp))
+            modifier = Modifier.fillMaxWidth().padding(10.dp)
+        )
     }
 
     CustomBottomNavigation(
         items = items.takeLast(7),
-        selectedTabIndex = selectedTabIndex2) {
+        selectedTabIndex = selectedTabIndex2
+    ) {
 
         selectedTabIndex2 = if (selectedTabIndex2 == it) -1 else it
         selectedTabIndex1 = -1
