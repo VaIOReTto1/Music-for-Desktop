@@ -18,11 +18,11 @@ import androidx.compose.ui.unit.dp
 fun CustomBottomNavigation(
     items: List<String>,
     selectedTabIndex: Int,
-    onTabSelected: (Int) -> Unit
-) {
+    onTabSelected: (Int) -> Unit, ) {
+
     Column (
-        modifier = Modifier.fillMaxWidth().padding(8.dp),
-    ) {
+        modifier = Modifier.fillMaxWidth().padding(8.dp),) {
+
         items.forEachIndexed { index, item ->
             val isSelected = selectedTabIndex == index
             val textColor = if (isSelected) Color.White else Color(0xffa4a9b3)
@@ -34,9 +34,11 @@ fun CustomBottomNavigation(
                     .fillMaxWidth()
                     .clip(RoundedCornerShape(5.dp))
                     .background(backgroundColor)
-                    .clickable { onTabSelected(index) },
+                    .clickable {
+                        if (!isSelected) {
+                            onTabSelected(index)
+                        }}) {
 
-                ) {
                 Text(
                     text = item,
                     color = textColor,
