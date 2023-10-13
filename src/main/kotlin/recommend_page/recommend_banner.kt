@@ -34,12 +34,12 @@ fun RecommendBanner() {
     Box(
         modifier = Modifier.width(495.dp).padding(start = 52.dp, top = 14.dp, end = 12.dp).clip(RoundedCornerShape(15.dp)).height(207.dp)
     ) {
-        ImageSlider(images = imageResourceIds)
+        ImageBanner(images = imageResourceIds)
     }
 }
 
 @Composable
-fun ImageSlider(images: List<String>) {
+fun ImageBanner(images: List<String>) {
     var currentIndex by remember { mutableStateOf(0) }
     var timer by remember { mutableStateOf<Timer?>(null) }
 
@@ -89,7 +89,7 @@ fun ImageSlider(images: List<String>) {
 
                 Box(
                     modifier = Modifier
-                        .size(10.dp)
+                        .size(8.dp)
                         .background(color, CircleShape)
                         .graphicsLayer { translationY = 4.dp.toPx() }
                 )
